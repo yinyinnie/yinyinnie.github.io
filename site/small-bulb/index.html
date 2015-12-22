@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>小灯泡 - HJ_Android_Library_README</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "小灯泡";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> HJ_Android_Library_README</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">web容器</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">小灯泡</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#_1">小灯泡模块接入指南</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#_2">接入步骤</a></li>
+                
+                    <li><a class="toctree-l4" href="#1androidmanifestxml">1.AndroidManifest.xml 文件修改</a></li>
+                
+                    <li><a class="toctree-l4" href="#2-imageloader">2.初始化 ImageLoader</a></li>
+                
+                    <li><a class="toctree-l4" href="#3">3.初始化小灯泡控件</a></li>
+                
+                    <li><a class="toctree-l4" href="#4web">4.Web端调用</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#change-log">Change Log</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">HJ_Android_Library_README</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>小灯泡</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="_1">小灯泡模块接入指南</h2>
+<blockquote>
+<p>HJSmallBulbs项目主要包含小灯泡控件；通过接入公共的Web容器，实现网页浏览;</p>
+</blockquote>
+<p>这个版本的改动较大，如下:</p>
+<blockquote>
+<ol>
+<li>自动登录逻辑在web容器里面，故小灯泡去掉</li>
+<li>配置化“小红点” 和 “分享”功能</li>
+<li>页面的title交给web端实现</li>
+<li>获取user_token，web容器里面已经实现了，故小灯泡中去掉</li>
+<li>去掉小灯泡自己的分享功能：web容器已经提供</li>
+<li>去掉alert、confirm功能：web容器已经提供</li>
+<li>加入QQ group的功能，这个功能由业务方自己处理。他不属于公共功能</li>
+<li>WebView中的下载拦截处理，由WebBrowser拦截处理</li>
+<li>加载出错的页面，由WebBrowser处理</li>
+<li>以前注入的js对象hj_event不存在了，统一使用HJApp对象</li>
+<li>自定义方法处理，WebBrowser也已经提供</li>
+<li>以前的配置都是走AndroidManifest.xml,这个版本统一在Java类中配置</li>
+</ol>
+</blockquote>
+<h2 id="_2">接入步骤</h2>
+<ul>
+<li><strong>注意1：由于小灯泡依赖于Web容器，关于Web容器的配置，我这里进行忽略，但你在接入小灯泡之前，必须配置好Web容器</strong></li>
+<li><strong>注意2：以下示例仅作参考，具体参数根据各个业务线进行调整</strong></li>
+</ul>
+<h3 id="1androidmanifestxml">1.AndroidManifest.xml 文件修改</h3>
+<ul>
+<li><strong>如果此时，你的眼光直接落到这里，再请往上看！！！！！</strong></li>
+<li><strong>增加权限，若已经配置，请忽略</strong></li>
+</ul>
+<p>```</p>
+<p><uses-permission android:name="android.permission.INTERNET" />
+ <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /></p>
+<p>```</p>
+<h3 id="2-imageloader">2.初始化 ImageLoader</h3>
+<p><strong>（注：如项目中已经有ImageLoader 则可忽略此步骤）</strong></p>
+<pre><code>DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisc(true).bitmapConfig(Bitmap.Config.RGB_565).build();
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).defaultDisplayImageOptions(options).threadPriority(Thread.MIN_PRIORITY).denyCacheImageMultipleSizesInMemory().build();
+        ImageLoader.getInstance().init(config);
+</code></pre>
+
+<h3 id="3">3.初始化小灯泡控件</h3>
+<ul>
+<li>xml中配置</li>
+</ul>
+<pre><code>&lt;com.hujiang.bulbs.SmallBulbsView
+        android:id=&quot;@+id/small_bulb_view&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_marginRight=&quot;10dp&quot;
+        android:layout_gravity=&quot;bottom|right&quot;
+        android:layout_marginBottom=&quot;10dp&quot;/&gt;
+
+</code></pre>
+
+<ul>
+<li>Java代码初始化</li>
+</ul>
+<pre><code>    SmallBulbsView mSmallBulbsView = (SmallBulbsView) findViewById(R.id.small_bulb_view);
+    // 初始化小灯泡配置
+    SmallBulbsOptions options = new SmallBulbsOptions();
+    options.enableRedPoint = mEnableRedPoint; //小红点总开关；默认true
+    options.supportShare = mIsSupportShare; // 分享开关；默认true
+    options.isShowActionBar = mIsOpenNavigator; // 是否显示导航栏；默认true
+    options.isPassBack = mIsPassBack; //返回键是否交给web端处理；默认true
+    // 别名，用于后台区分应用；默认android_notice_transverse
+    options.smallBulbsAliases = &quot;android_notice_transverse&quot;; 
+    //自己扩展JS方法，需继承JS-SDK中的JSEvent类
+    options.smallBulbsJSEvent = new MJSEvent();
+    mSmallBulbsView.setSmallBulbsOptions(options);
+
+    //设置默认图片
+    Resources res = getResources();
+    Bitmap b1 = BitmapFactory.decodeResource(res, R.mipmap.common_btn_duanwu);
+    Bitmap b2 = BitmapFactory.decodeResource(res, R.mipmap.common_btn_duanwu_pressed);
+    mSmallBulbsView.setDefaultImage(b1, b2);
+
+    //设置是否显示动画
+    mSmallBulbsView.setIsShowAnimation(false);
+
+    // 初始化小灯泡
+    mSmallBulbsView.init(MainActivity.this);
+
+</code></pre>
+
+<h3 id="4web">4.Web端调用</h3>
+<p>详细接口，请参考：Web容器和JS-SDK相关文档</p>
+<h2 id="change-log">Change Log</h2>
+<ul>
+<li>
+<p>2.0.0-SNAPSHOT</p>
+<ol>
+<li>接入Web容器，重构小灯泡；完善小灯泡测试Demo</li>
+<li>fix error on SDK 4.0:CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.</li>
+</ol>
+</li>
+<li>
+<p>1.1.5</p>
+<ol>
+<li>fix error on SDK 4.0:CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.</li>
+<li>refactor package utlis to utils, you know, that is a error word</li>
+</ol>
+</li>
+<li>
+<p>1.1.4</p>
+<ol>
+<li>优化小红点逻辑，小红点提测</li>
+</ol>
+</li>
+<li>
+<p>1.1.3</p>
+<ol>
+<li>去掉library里面AndroidManifest里面的UMENG_CHANNEL及BULBS_ALIASES信息</li>
+</ol>
+</li>
+<li>
+<p>1.1.2</p>
+<ol>
+<li>支持最低版本11</li>
+<li>调整SmallBulbsView接口loadActivity(FragmentActivity activity, String token)为loadActivity(Activity activity, String token)</li>
+<li>解决SmallBulbsView接口setRedPointEnable(boolean enable)的Bug</li>
+</ol>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href=".." class="btn btn-neutral" title="web容器"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+
+</body>
+</html>

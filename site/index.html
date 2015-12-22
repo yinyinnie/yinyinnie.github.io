@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>HJ_Android_Library_README</title>
+  
+
+  <link rel="shortcut icon" href="./img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="./css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "None";
+  </script>
+  
+  <script src="./js/jquery-2.1.1.min.js"></script>
+  <script src="./js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="./js/highlight.pack.js"></script>
+  <script src="./js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> HJ_Android_Library_README</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href=".">web容器</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#android-web">Android-Web容器 说明文档</a></li>
+                
+                    <li><a class="toctree-l4" href="#_1">使用方法：</a></li>
+                
+                    <li><a class="toctree-l4" href="#http-header">HTTP Header</a></li>
+                
+                    <li><a class="toctree-l4" href="#comhujiangbrowserbrowser100">com.hujiang.browser:browser:1.0.0</a></li>
+                
+                    <li><a class="toctree-l4" href="#comhujiangbrowserbrowser101">com.hujiang.browser:browser:1.0.1</a></li>
+                
+                    <li><a class="toctree-l4" href="#comhujiangbrowserbrowser102">com.hujiang.browser:browser:1.0.2</a></li>
+                
+                    <li><a class="toctree-l4" href="#comhujiangbrowserbrowser103">com.hujiang.browser:browser:1.0.3</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="small-bulb/">小灯泡</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">HJ_Android_Library_README</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>web容器</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="android-web">Android-Web容器 说明文档</h1>
+<blockquote>
+<p>约定</p>
+</blockquote>
+<ul>
+<li>打开网页的容器</li>
+<li>内部处理了JS和原生的交互</li>
+<li>内置了分享功能（网页内无定义分享，默认截屏分享）</li>
+</ul>
+<p>具体技术细节参考方案：<a href="https://gitlab.yeshj.com/mobilegroup/hybridusage/blob/master/Web%E4%B8%8ENative%E4%BA%92%E9%80%9A.md">Web与Native互通方案</a></p>
+<h4 id="_1">使用方法：</h4>
+<ol>
+<li>打开网页:</li>
+</ol>
+<pre><code class="java">
+
+    /**
+     * @param context  上下文
+     * @param url      传入的url
+     * @param jsEvent  自定义的JsEvent，必须继承JSEvent类
+     * @param isShowActionBar 是否显示ActionBar
+     * @param isPassBack      返回按钮是否不响应由见面自己处理
+     */
+    JSWebViewActivity.start(Context context, String url)
+    JSWebViewActivity.start(Context context, String url, T jsEvent)
+    JSWebViewActivity.start(Context context, String url, boolean isShowActionBar)
+    JSWebViewActivity.start(Context context, String url, T jsEvent, boolean isShowActionBar)
+    JSWebViewActivity.start(Context context, String url, T jsEvent, boolean isShowActionBar, boolean isPassBack)
+</code></pre>
+
+<ol>
+<li>配置状态栏背景颜色、图标颜色、标题颜色 </li>
+</ol>
+<pre><code>    WebBrowserManager.getInstance().getWebBrowserNavigator().setActionBarBgColor(mColorPicker.getColor());
+    WebBrowserManager.getInstance().getWebBrowserNavigator().setIconColor(0XFF000000);
+    WebBrowserManager.getInstance().getWebBrowserNavigator().setTitleColor(0XFF000000);
+</code></pre>
+
+<ol>
+<li>注入Account与WebBrowser</li>
+</ol>
+<pre><code>            AccountIntruder.getInstance().setAccountHandler(new AccountHandler() {
+                @Override
+                public void refreshToken(final Callback callback) {
+                    AccountManager.instance().refreshToken(AccountManager.instance().getRefreshToken(), new AccountManager.RefreshTokenCallback() {
+                        @Override
+                        public void onRefreshSuccess() {
+                            callback.onSuccess();
+                    }
+
+                    @Override
+                    public void onRefreshFailure() {
+                        callback.onFailure();
+                    }
+                });
+            }
+
+            @Override
+            public void closeTrial() {
+                AccountManager.instance().closeTrial();
+           }
+
+            @Override
+            public boolean isLogin() {
+                return AccountManager.instance().isLogin();
+            }
+
+            @Override
+            public void requestClubAuth(final RequestClubAuthCallback callback) {
+                AccountAPI.requestClubAuthCookie(AccountManager.instance().getUserToken(), new BaseAPICallback&lt;ClubAuthCookieResult&gt;() {
+                    @Override
+                    public void onRequestSuccess(ClubAuthCookieResult clubAuthCookieResult, int i) {
+                        String cookieName = clubAuthCookieResult.getCookieInfo().getCookieName();
+                        String cookieValue = clubAuthCookieResult.getCookieInfo().getCookieValue();
+                        List&lt;String&gt; cookieDomains = clubAuthCookieResult.getCookieInfo().getCookieDomains();
+                        callback.onSuccess(cookieName, cookieValue, cookieDomains);
+                    }
+
+                    @Override
+                    public void onRequestFail(ClubAuthCookieResult clubAuthCookieResult, int i) {
+                        callback.onFailure(clubAuthCookieResult.getCode());
+                    }
+                });
+            }
+
+            @Override
+            public String getUserToken() {
+                return AccountManager.instance().getUserToken();
+            }
+
+            @Override
+            public String getRefreshToken() {
+                return AccountManager.instance().getRefreshToken();
+            }
+
+            @Override
+            public int getInvalidAccessTokenCode() {
+                return AccountResponseCode.CODE_INVALID_ACCESS_TOKEN;
+            }
+
+            @Override
+            public void startLoginActivity(Context context) {
+                LoginActivity.start(context);
+            }
+        });
+</code></pre>
+
+<h4 id="http-header">HTTP Header</h4>
+<ol>
+<li>User-Agent: Web默认UA + / + HJApp 1.0/应用包名</li>
+<li>HJUserAgent: HJApp 1.0/平台/设备型号/DeviceID/系统版本/应用包名(Bundle ID)/AppVersion.buildVersion/渠道名</li>
+<li>access_token: app侧的用户token</li>
+</ol>
+<h4 id="comhujiangbrowserbrowser100">com.hujiang.browser:browser:1.0.0</h4>
+<ul>
+<li>通用Web网页的功能<ul>
+<li>加载UI</li>
+<li>加载进度条</li>
+<li>加载失败的重试</li>
+<li>页面后退逻辑</li>
+<li>页面历史重复只后退一次</li>
+</ul>
+</li>
+<li>自动请求接口获取<code>ClubAuth</code>以及<code>Domain</code>写入cookie</li>
+<li>修改header</li>
+<li>提供web打开登录页面接口: HJApp.service_login()</li>
+<li>提供web获取token的方法</li>
+<li>支持refreshtoken自动续期，如果token非法，会自动弹出登录页面</li>
+<li>读取网页标题</li>
+<li>可配置是否显示标题栏</li>
+<li>标题栏的图标以及文字颜色</li>
+<li>显示设置、设置可配置</li>
+<li>是否显示分享</li>
+</ul>
+<h4 id="comhujiangbrowserbrowser101">com.hujiang.browser:browser:1.0.1</h4>
+<ul>
+<li>写cookie,自动刷新token续期，自动拦截错误页面，识别无效token，跳转登录页面。</li>
+<li>分享版本升级，解决分享图片模糊问题。</li>
+<li>修正分享页面截图，多次点击弹出多个分享页面问题</li>
+</ul>
+<p>接入注意事项：</p>
+<p>如果要获得和登录相关全部功能：建议同步接入Html5登录模块： com.hujiang.account:account:1.1.8</p>
+<p>在Debug版本打个Debug模式：</p>
+<pre><code>    JSSDK.getInstance().setDebug(isDebug);
+</code></pre>
+
+<h4 id="comhujiangbrowserbrowser102">com.hujiang.browser:browser:1.0.2</h4>
+<ul>
+<li>Web容器与登录模块解藕</li>
+<li>UA修改添加HJApp 1.0</li>
+<li>修改JS事件，实现时必须写两个参数。</li>
+</ul>
+<h4 id="comhujiangbrowserbrowser103">com.hujiang.browser:browser:1.0.3</h4>
+<p>增加方法以修复1.0.2无法设置isSupportShare：</p>
+<pre><code>
+    public static &lt;T extends JSEvent&gt; void start(Context context, String url, T jsEvent, boolean isShowActionBar, boolean isPassBack,boolean isSupportShare) {
+
+    }
+
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="small-bulb/" class="btn btn-neutral float-right" title="小灯泡"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+        <span style="margin-left: 15px"><a href="small-bulb/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 0.14.0
+Build Date UTC : 2015-12-22 02:51:04.663375
+-->
