@@ -1,0 +1,603 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>DataBinding之『简单使用』 | 静夜思</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="YYDroid">
+    
+
+    
+    <meta name="description" content="什么是Data BindingDataBinding可以说是一种Android平台MVVM的框架，直接将数据和视图进行绑定。
+Google很早就推出了Data Binding Library, 不过一直是Beta版，存在着一些Bug。 这次Google IO 大会（2016年）上发布最新Data Binding Library，现在DataBinding已经是Production了，你可以放心的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DataBinding之『简单使用』">
+<meta property="og:url" content="http://yinyinnie.github.com/2016/08/18/DataBinding-Talk-One/index.html">
+<meta property="og:site_name" content="静夜思">
+<meta property="og:description" content="什么是Data BindingDataBinding可以说是一种Android平台MVVM的框架，直接将数据和视图进行绑定。
+Google很早就推出了Data Binding Library, 不过一直是Beta版，存在着一些Bug。 这次Google IO 大会（2016年）上发布最新Data Binding Library，现在DataBinding已经是Production了，你可以放心的">
+<meta property="og:image" content="http://7xs1c5.com1.z0.glb.clouddn.com/data-binding-screen.png">
+<meta property="og:image" content="http://7xs1c5.com1.z0.glb.clouddn.com/DataBinding-Talk-One.png">
+<meta property="og:updated_time" content="2016-08-18T08:50:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DataBinding之『简单使用』">
+<meta name="twitter:description" content="什么是Data BindingDataBinding可以说是一种Android平台MVVM的框架，直接将数据和视图进行绑定。
+Google很早就推出了Data Binding Library, 不过一直是Beta版，存在着一些Bug。 这次Google IO 大会（2016年）上发布最新Data Binding Library，现在DataBinding已经是Production了，你可以放心的">
+<meta name="twitter:image" content="http://7xs1c5.com1.z0.glb.clouddn.com/data-binding-screen.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="静夜思" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="静夜思">静夜思</a></h1>
+				<h2 class="blog-motto">只为那些点滴的瞬间</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yinyinnie.github.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/08/18/DataBinding-Talk-One/" title="DataBinding之『简单使用』" itemprop="url">DataBinding之『简单使用』</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="YYDroid" target="_blank" itemprop="author">YYDroid</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-18T08:48:35.000Z" itemprop="datePublished"> 发表于 2016-08-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是Data-Binding"><span class="toc-number">1.</span> <span class="toc-text">什么是Data Binding</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用Data-Binding-Library的环境要求"><span class="toc-number">2.</span> <span class="toc-text">使用Data Binding Library的环境要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单使用步骤"><span class="toc-number">3.</span> <span class="toc-text">简单使用步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Step0"><span class="toc-number">3.1.</span> <span class="toc-text">Step0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step1"><span class="toc-number">3.2.</span> <span class="toc-text">Step1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一种写法"><span class="toc-number">3.2.1.</span> <span class="toc-text">第一种写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二种写法"><span class="toc-number">3.2.2.</span> <span class="toc-text">第二种写法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step2"><span class="toc-number">3.3.</span> <span class="toc-text">Step2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step3"><span class="toc-number">3.4.</span> <span class="toc-text">Step3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step4"><span class="toc-number">3.5.</span> <span class="toc-text">Step4</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p><img src="http://7xs1c5.com1.z0.glb.clouddn.com/data-binding-screen.png" alt="￼DataBinding"></p>
+<h1 id="什么是Data-Binding"><a href="#什么是Data-Binding" class="headerlink" title="什么是Data Binding"></a>什么是Data Binding</h1><p>DataBinding可以说是一种Android平台MVVM的框架，直接将数据和视图进行绑定。</p>
+<p>Google很早就推出了Data Binding Library, 不过一直是Beta版，存在着一些Bug。 这次Google IO 大会（2016年）上发布最新Data Binding Library，现在DataBinding已经是Production了，你可以放心的玩耍了！！</p>
+<h1 id="使用Data-Binding-Library的环境要求"><a href="#使用Data-Binding-Library的环境要求" class="headerlink" title="使用Data Binding Library的环境要求"></a>使用Data Binding Library的环境要求</h1><ul>
+<li><p>它是Support Library，<code>Android 2.1(ApI Level 7+)</code> 都可以使用</p>
+</li>
+<li><p>Android Gradle Plugin 1.5.0-alpha1以上版本</p>
+</li>
+<li><p>Android Studio 1.3以上版本</p>
+</li>
+</ul>
+<h1 id="简单使用步骤"><a href="#简单使用步骤" class="headerlink" title="简单使用步骤"></a>简单使用步骤</h1><h2 id="Step0"><a href="#Step0" class="headerlink" title="Step0"></a>Step0</h2><p>新建一个Android Project，修改app module中的build.gradle文件，加入以下代码：</p>
+<pre><code>android {
+    ....
+    dataBinding {
+        enabled = true
+    }
+}
+</code></pre><p><strong>注意：</strong> 如果你的工程依赖了一个使用了<code>Data Binding</code> 的Library，你的app module中build.gradle依然要加入以上代码</p>
+<h2 id="Step1"><a href="#Step1" class="headerlink" title="Step1"></a>Step1</h2><p>准备你的ViewModel类，有两种写法，如下样例：</p>
+<h3 id="第一种写法"><a href="#第一种写法" class="headerlink" title="第一种写法"></a>第一种写法</h3><pre><code>/**
+ * Created on by yydroid 8/17/16.
+ */
+public class User {
+    private final String firstName;
+    private final String lastName;
+    public User(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    public String getFirstName() {
+        return this.firstName;
+    }
+    public String getLastName() {
+        return this.lastName;
+    }
+}
+</code></pre><h3 id="第二种写法"><a href="#第二种写法" class="headerlink" title="第二种写法"></a>第二种写法</h3><pre><code>/**
+ * Created on by yydroid 8/17/16.
+ */
+public class User {
+    public final String firstName;
+    public final String lastName;
+    public User(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+}
+</code></pre><h2 id="Step2"><a href="#Step2" class="headerlink" title="Step2"></a>Step2</h2><p>使用DataBinding时，布局文件有点不太一样，如下样例：</p>
+<pre><code>&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;!--官方说法:这里不写,会自动生成MainActivityBinding类.
+    但是我测试下,这里有个Bug,在我这版本的AndroidStudio(2.2 beta)中,这个类不会自动生成--&gt;
+    &lt;data class=&quot;cn.onlinecache.databindingdemo.MainActivityBinding&quot;&gt;
+        &lt;variable name=&quot;user&quot; type=&quot;cn.onlinecache.databindingdemo.User&quot;/&gt;
+    &lt;/data&gt;
+    &lt;LinearLayout
+        android:orientation=&quot;vertical&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:gravity=&quot;center&quot;&gt;
+        &lt;TextView android:layout_width=&quot;wrap_content&quot;
+                  android:layout_height=&quot;wrap_content&quot;
+                  android:text=&quot;@{user.firstName}&quot;
+            android:textSize=&quot;40dp&quot;/&gt;
+        &lt;TextView android:layout_width=&quot;wrap_content&quot;
+                  android:layout_height=&quot;wrap_content&quot;
+                  android:text=&quot;@{user.lastName}&quot;
+            android:textSize=&quot;40dp&quot;/&gt;
+
+    &lt;/LinearLayout&gt;
+&lt;/layout&gt;
+</code></pre><h2 id="Step3"><a href="#Step3" class="headerlink" title="Step3"></a>Step3</h2><p>在你的对应Activity的onCreate，加入核心绑定代码，如下样例：</p>
+<pre><code>...
+ @Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+     MainActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+    User user = new User(&quot;YYDroid&quot;, &quot;Nie&quot;);
+    binding.setUser(user);
+
+}
+...
+</code></pre><p><strong>注意:</strong> </p>
+<ul>
+<li>MainActivityBinding类是自动根据Step2中的配置来生成的</li>
+<li>当使用ListView或者RecyclerView时，在对应的Adapter类中加入代码：</li>
+</ul>
+<pre><code>ListItemBinding binding = ListItemBinding.inflate(layoutInflater, viewGroup, false);
+//or
+ListItemBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item, viewGroup, false);
+</code></pre><h2 id="Step4"><a href="#Step4" class="headerlink" title="Step4"></a>Step4</h2><p>点击Android Studio Run，你将会看到神奇的效果，的效果如下：</p>
+<p><img src="http://7xs1c5.com1.z0.glb.clouddn.com/DataBinding-Talk-One.png" alt="DataBindingDemo"></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Android/">Android</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yinyinnie.github.com/2016/08/18/DataBinding-Talk-One/" data-title="DataBinding之『简单使用』 | 静夜思" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/07/27/读《小狗钱钱》所想/"  title="读《小狗钱钱》所想">
+ <strong>下一篇：</strong><br/> 
+ <span>读《小狗钱钱》所想
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/08/18/DataBinding-Talk-One/" data-title="DataBinding之『简单使用』" data-url="http://yinyinnie.github.com/2016/08/18/DataBinding-Talk-One/"></div>
+</section>
+
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是Data-Binding"><span class="toc-number">1.</span> <span class="toc-text">什么是Data Binding</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用Data-Binding-Library的环境要求"><span class="toc-number">2.</span> <span class="toc-text">使用Data Binding Library的环境要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单使用步骤"><span class="toc-number">3.</span> <span class="toc-text">简单使用步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Step0"><span class="toc-number">3.1.</span> <span class="toc-text">Step0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step1"><span class="toc-number">3.2.</span> <span class="toc-text">Step1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一种写法"><span class="toc-number">3.2.1.</span> <span class="toc-text">第一种写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二种写法"><span class="toc-number">3.2.2.</span> <span class="toc-text">第二种写法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step2"><span class="toc-number">3.3.</span> <span class="toc-text">Step2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step3"><span class="toc-number">3.4.</span> <span class="toc-text">Step3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step4"><span class="toc-number">3.5.</span> <span class="toc-text">Step4</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Mac/" title="Mac">Mac<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/人文/" title="人文">人文<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Android/" title="Android">Android<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/杂谈/" title="杂谈">杂谈<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/理财/" title="理财">理财<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/计算机语言/" title="计算机语言">计算机语言<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/产品/" title="产品">产品<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术/" title="技术">技术<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/无厘头/" title="无厘头">无厘头<sup>1</sup></a></li>
+			
+		
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://developer.android.com" target="_blank" title="Android Developers">Android Developers</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com" target="_blank" title="github">github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://mobilev5.github.io/" target="_blank" title="移动开发">移动开发</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://kymjs.com/" target="_blank" title="kymjs张涛的开源实验室">kymjs张涛的开源实验室</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="YYDroid">YYDroid</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"yinyin"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'yinyin';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
