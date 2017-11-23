@@ -1,17 +1,12 @@
-
- <!DOCTYPE HTML>
-<html lang="zh-Hans">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   
-    <title>七牛云存储上部署iOS应用 | 静夜思</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
-    
-    <meta name="author" content="YYDroid">
-    
-
-    
-    <meta name="description" content="可能很多人都用过Dropbox，但是很不幸，它最近被有关部门封了。其实，我很想知道封它的理由，但是也不关心，只是有点愤慨。所以，找到国内的七牛。在此也非常感谢七牛，它真得很帮开发者们很多忙；感谢的话嘛，不能说多，转入正题，如何利用七牛部署iOS应用：
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>七牛云存储上部署iOS应用 | 静夜思</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="可能很多人都用过Dropbox，但是很不幸，它最近被有关部门封了。其实，我很想知道封它的理由，但是也不关心，只是有点愤慨。所以，找到国内的七牛。在此也非常感谢七牛，它真得很帮开发者们很多忙；感谢的话嘛，不能说多，转入正题，如何利用七牛部署iOS应用：
 Step1稍微观摩一下七牛的网站http://www.qiniu.com，看看它是什么，长啥样，在IT界大概是属于哪一个领域的公司，and so o">
 <meta property="og:type" content="article">
 <meta property="og:title" content="七牛云存储上部署iOS应用">
@@ -24,80 +19,230 @@ Step1稍微观摩一下七牛的网站http://www.qiniu.com，看看它是什么�
 <meta name="twitter:title" content="七牛云存储上部署iOS应用">
 <meta name="twitter:description" content="可能很多人都用过Dropbox，但是很不幸，它最近被有关部门封了。其实，我很想知道封它的理由，但是也不关心，只是有点愤慨。所以，找到国内的七牛。在此也非常感谢七牛，它真得很帮开发者们很多忙；感谢的话嘛，不能说多，转入正题，如何利用七牛部署iOS应用：
 Step1稍微观摩一下七牛的网站http://www.qiniu.com，看看它是什么，长啥样，在IT界大概是属于哪一个领域的公司，and so o">
-
-    
+  
     <link rel="alternative" href="/atom.xml" title="静夜思" type="application/atom+xml">
-    
-    
-    <link rel="icon" href="/img/favicon.ico">
-    
-    
-    <link rel="apple-touch-icon" href="/img/jacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
-    
-    <link rel="stylesheet" href="/css/style.css">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7c69de1825855a84175cd5ab717d5e74";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
 </head>
 
-  <body>
-    <header>
-      
-<div>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xs1c5.com1.z0.glb.clouddn.com/yydroidIMG_0222.JPG" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">YYDroid</a></h1>
+		</hgroup>
+
 		
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="静夜思">静夜思</a></h1>
-				<h2 class="blog-motto">只为那些点滴的瞬间</h2>
+		<p class="header-subtitle">只为那些点滴的瞬间</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					<ul>
-					 
-						<li><a href="/">Home</a></li>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">归档</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/yinyinnie/" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/nieyinyin" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/nie-yin-yin" title="zhihu">zhihu</a>
+					        
+								<a class="douban" target="_blank" href="https://www.douban.com/people/onlinecache/" title="douban">douban</a>
+					        
+								<a class="mail" target="_blank" href="mailto:nieyinyin@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Mac/" style="font-size: 20px;">Mac</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/产品/" style="font-size: 10px;">产品</a> <a href="/tags/人文/" style="font-size: 16.67px;">人文</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a> <a href="/tags/技术杂谈/" style="font-size: 10px;">技术杂谈</a> <a href="/tags/无厘头/" style="font-size: 10px;">无厘头</a> <a href="/tags/杂谈/" style="font-size: 13.33px;">杂谈</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/计算机语言/" style="font-size: 10px;">计算机语言</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
 					
-						<li><a href="/about">About</a></li>
-					
-					<li>
- 					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:yinyinnie.github.com">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
-    </header>
-    <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
-  
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2014/07/29/七牛云存储上部署iOS应用/" title="七牛云存储上部署iOS应用" itemprop="url">七牛云存储上部署iOS应用</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="YYDroid" target="_blank" itemprop="author">YYDroid</a>
-		
-  <p class="article-time">
-    <time datetime="2014-07-29T06:21:53.000Z" itemprop="datePublished"> 发表于 2014-07-29</time>
-    
-  </p>
-</header>
-	<div class="article-content">
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Step1"><span class="toc-number">1.</span> <span class="toc-text">Step1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step2"><span class="toc-number">2.</span> <span class="toc-text">Step2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step3"><span class="toc-number">3.</span> <span class="toc-text">Step3</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#最后，再次感谢七牛，祝愿七牛越做越好！"><span class="toc-number">3.0.1.</span> <span class="toc-text">最后，再次感谢七牛，祝愿七牛越做越好！</span></a></li></ol></li></ol></li></ol>
-		
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://github.com">github</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://mobilev5.github.io/">MobileV5</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://kymjs.com/">kymjs开源实验室</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
 		</div>
-		
-		<p>可能很多人都用过Dropbox，但是很不幸，它最近被有关部门封了。其实，我很想知道封它的理由，但是也不关心，只是有点愤慨。所以，找到国内的七牛。在此也非常感谢七牛，它真得很帮开发者们很多忙；感谢的话嘛，不能说多，转入正题，如何利用七牛部署iOS应用：</p>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">YYDroid</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xs1c5.com1.z0.glb.clouddn.com/yydroidIMG_0222.JPG" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">YYDroid</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">只为那些点滴的瞬间</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">归档</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/yinyinnie/" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/nieyinyin" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/nie-yin-yin" title="zhihu">zhihu</a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/onlinecache/" title="douban">douban</a>
+			        
+						<a class="mail" target="_blank" href="mailto:nieyinyin@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-七牛云存储上部署iOS应用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/07/29/七牛云存储上部署iOS应用/" class="article-date">
+  	<time datetime="2014-07-29T06:21:53.000Z" itemprop="datePublished">2014-07-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      七牛云存储上部署iOS应用
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>可能很多人都用过Dropbox，但是很不幸，它最近被有关部门封了。其实，我很想知道封它的理由，但是也不关心，只是有点愤慨。所以，找到国内的七牛。在此也非常感谢七牛，它真得很帮开发者们很多忙；感谢的话嘛，不能说多，转入正题，如何利用七牛部署iOS应用：</p>
 <h2 id="Step1"><a href="#Step1" class="headerlink" title="Step1"></a>Step1</h2><p>稍微观摩一下七牛的网站<a href="http://www.qiniu.com，看看它是什么，长啥样，在IT界大概是属于哪一个领域的公司，and" target="_blank" rel="external">http://www.qiniu.com，看看它是什么，长啥样，在IT界大概是属于哪一个领域的公司，and</a> so on！！！我相信很多人正在用360网盘、百度网盘、金山网盘，这个七牛貌似也做网盘，有什么不同呢？当然，我只是提出了一个问题引子，你可以给自己再多提几个问题</p>
 <h2 id="Step2"><a href="#Step2" class="headerlink" title="Step2"></a>Step2</h2><p>注册一个账号。很荣幸，七牛提供了注册免费送空间的服务，新手上路步骤如下：<a href="https://portal.qiniu.com/tutorial/index" target="_blank" rel="external">https://portal.qiniu.com/tutorial/index</a></p>
 <h2 id="Step3"><a href="#Step3" class="headerlink" title="Step3"></a>Step3</h2><p>我相信经过第三步，你差不多已经会用七牛了。接下来，咱们可以干正活了。</p>
@@ -115,420 +260,141 @@ Step1稍微观摩一下七牛的网站http://www.qiniu.com，看看它是什么�
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">     &lt;head&gt;</span><br><span class="line">          &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;</span><br><span class="line">          &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no&quot;/&gt;</span><br><span class="line">     &lt;/head&gt;</span><br><span class="line">     &lt;body&gt;</span><br><span class="line">          &lt;p&gt; </span><br><span class="line">             &lt;a href=&quot;itms-services://?action=download-manifest&amp;url=https://dn-corptravel.qbox.me/plist/fareasthorizon.plist&quot;&gt;iOS程序下载 &lt;/a&gt; </span><br><span class="line">          &lt;/p&gt;</span><br><span class="line">          &lt;br/&gt;</span><br><span class="line">     &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <p>通过这个html文件，我相信你看到了：<strong>itms-services://?action=download-manifest&amp;url=<a href="https://dn-corptravel.qbox.me/plist/fareasthorizon.plist" target="_blank" rel="external">https://dn-corptravel.qbox.me/plist/fareasthorizon.plist</a></strong>，我相信苹果开发者们都懂的。如果你不是苹果开发者，我相信你也懂得，所以不解释，反正，这种协议的链接，iOS会认识，它会自动帮你解析。继续看下去，你会发现<a href="https://dn-corptravel.qbox.me/plist/fareasthorizon.plist，它就是你上传到七牛的plist的文件地址；但是你发现它是https的，而且，跟你看到地址不一样。这就对了。" target="_blank" rel="external">https://dn-corptravel.qbox.me/plist/fareasthorizon.plist，它就是你上传到七牛的plist的文件地址；但是你发现它是https的，而且，跟你看到地址不一样。这就对了。</a><br>你需要在七牛上设置下：“空间设置” –&gt; “申请域名绑定” –&gt;出现域名域名选择界面–&gt; 选择.qbox.me,因为这个域名支持https协议的；设置完成后，你需要把你手动把https的域名替换掉http的域名，举例如下：<br>我的plist的http地址如下：<a href="http://corptravel.qiniudn.com/plist/fareasthorizon.plist，替换域名之后的https的地址如下：https://dn-corptravel.qbox.me/plist/fareasthorizon.plist" target="_blank" rel="external">http://corptravel.qiniudn.com/plist/fareasthorizon.plist，替换域名之后的https的地址如下：https://dn-corptravel.qbox.me/plist/fareasthorizon.plist</a><br>我想此时，你会有个疑问：为什么要用https协议呢。原因：因为iOS7.1 要求的</p>
-<h4 id="最后，再次感谢七牛，祝愿七牛越做越好！"><a href="#最后，再次感谢七牛，祝愿七牛越做越好！" class="headerlink" title="最后，再次感谢七牛，祝愿七牛越做越好！"></a>最后，再次感谢七牛，祝愿七牛越做越好！</h4>  
-	</div>
-		<footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/iOS/">iOS</a>
+<h4 id="最后，再次感谢七牛，祝愿七牛越做越好！"><a href="#最后，再次感谢七牛，祝愿七牛越做越好！" class="headerlink" title="最后，再次感谢七牛，祝愿七牛越做越好！"></a>最后，再次感谢七牛，祝愿七牛越做越好！</h4>
+      
+    </div>
+    
   </div>
-
-</div>
-
-
-
-	<div class="article-share" id="share">
-	
-	  <div data-url="http://yinyinnie.github.com/2014/07/29/七牛云存储上部署iOS应用/" data-title="七牛云存储上部署iOS应用 | 静夜思" data-tsina="undefined" class="share clearfix">
-	  </div>
-	
-	</div>
-
-
-</footer>
-
-   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2014/09/10/程序员的健康保护操/" title="程序员的健康保护操">
-  <strong>上一篇：</strong><br/>
-  <span>
-  程序员的健康保护操</span>
-</a>
-</div>
-
-
-<div class="next">
-<a href="/2012/04/10/内核-进程-线程他们好抽象/"  title="内核-进程-线程他们好抽象">
- <strong>下一篇：</strong><br/> 
- <span>内核-进程-线程他们好抽象
-</span>
-</a>
-</div>
-
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/09/10/程序员的健康保护操/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          程序员的健康保护操
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2012/04/10/内核-进程-线程他们好抽象/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">内核-进程-线程他们好抽象</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
 </nav>
 
-	
-<section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2014/07/29/七牛云存储上部署iOS应用/" data-title="七牛云存储上部署iOS应用" data-url="http://yinyinnie.github.com/2014/07/29/七牛云存储上部署iOS应用/"></div>
-</section>
-
-
-<section id="comments" class="comment">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
-
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
-
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
- 
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Step1"><span class="toc-number">1.</span> <span class="toc-text">Step1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step2"><span class="toc-number">2.</span> <span class="toc-text">Step2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step3"><span class="toc-number">3.</span> <span class="toc-text">Step3</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#最后，再次感谢七牛，祝愿七牛越做越好！"><span class="toc-number">3.0.1.</span> <span class="toc-text">最后，再次感谢七牛，祝愿七牛越做越好！</span></a></li></ol></li></ol></li></ol>
- 
-  </div>
-
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
-<aside class="clearfix">
-
   
+</article>
 
-  
-<div class="tagslist">
-	<p class="asidetitle">标签</p>
-		<ul class="clearfix">
-		
-			
-				<li><a href="/tags/Mac/" title="Mac">Mac<sup>4</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/人文/" title="人文">人文<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/JavaScript/" title="JavaScript">JavaScript<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Android/" title="Android">Android<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/杂谈/" title="杂谈">杂谈<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/iOS/" title="iOS">iOS<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/理财/" title="理财">理财<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/计算机语言/" title="计算机语言">计算机语言<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/产品/" title="产品">产品<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/技术/" title="技术">技术<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/无厘头/" title="无厘头">无厘头<sup>1</sup></a></li>
-			
-		
-			
-		
-		</ul>
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
 </div>
 
 
-  <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
-    <ul>
-        
-          <li>
-            
-            	<a href="https://developer.android.com" target="_blank" title="Android Developers">Android Developers</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="https://github.com" target="_blank" title="github">github</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://mobilev5.github.io/" target="_blank" title="移动开发">移动开发</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://kymjs.com/" target="_blank" title="kymjs张涛的开源实验室">kymjs张涛的开源实验室</a>
-            
-          </li>
-        
-    </ul>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="七牛云存储上部署iOS应用" data-title="七牛云存储上部署iOS应用" data-url="http://yinyinnie.github.com/2014/07/29/七牛云存储上部署iOS应用/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
 </div>
 
-</aside>
+
+
+
 </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 YYDroid
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
     </div>
-    <footer><div id="footer" >
-	
-	
-	<div class="social-font" class="clearfix">
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	</div>
-			
-		
-
-		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
-		
-		<a href="/about" target="_blank" title="YYDroid">YYDroid</a>
-		
-		
-		</p>
-</div>
+  </div>
 </footer>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-  
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else{
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
-        
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
     }
-  });
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
 });
 </script>
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  c.click(function(){
-    ta.css('display', 'block').addClass('fadeIn');
-  });
-  o.click(function(){
-    ta.css('display', 'none');
-  });
-  $(window).scroll(function(){
-    ta.css("top",Math.max(140,320-$(this).scrollTop()));
-  });
-});
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina'),
-      description = $this.attr('description');
-  var html = [
-  '<div class="hoverqrcode clearfix"></div>',
-  '<a class="overlay" id="qrcode"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
-  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-
-  $('.hoverqrcode').hide();
-
-  var myWidth = 0;
-  function updatehoverqrcode(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-    var qrsize = myWidth > 1024 ? 200:100;
-    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
-    var p = $('.article-share-qrcode').position();
-    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
-                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
-                          .qrcode(options);
-  };
-  $(window).resize(function(){
-    $('.hoverqrcode').hide();
-  });
-  $('.article-share-qrcode').click(function(){
-    updatehoverqrcode();
-    $('.hoverqrcode').toggle();
-  });
-  $('.article-share-qrcode').hover(function(){}, function(){
-      $('.hoverqrcode').hide();
-  });
-});   
-</script>
-
-
-
-<script type="text/javascript">
-  var duoshuoQuery = {short_name:"yinyin"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-    || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script> 
-
-
-<script type="text/javascript">
-
-var disqus_shortname = 'yinyin';
-
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-</script>
-
-
-
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.article-content').each(function(i){
-    $(this).find('img').each(function(){
-      if ($(this).parent().hasClass('fancybox')) return;
-      var alt = this.alt;
-      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
-    });
-    $(this).find('.fancybox').each(function(){
-      $(this).attr('rel', 'article' + i);
-    });
-  });
-  if($.fancybox){
-    $('.fancybox').fancybox();
-  }
-}); 
-</script>
-
-
-
-<!-- Analytics Begin -->
-
-
-
-
-
-<!-- Analytics End -->
-
-<!-- Totop Begin -->
-
-	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
-	</div>
-	<script src="/js/totop.js"></script>
-
-<!-- Totop End -->
-
-<!-- MathJax Begin -->
-<!-- mathjax config similar to math.stackexchange -->
-
-
-<!-- MathJax End -->
-
-<!-- Tiny_search Begin -->
-
-<!-- Tiny_search End -->
-
-  </body>
+  </div>
+</body>
 </html>
