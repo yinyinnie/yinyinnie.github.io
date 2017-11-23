@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>静夜思</title>
+  <title>YYDroid的随想录</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="website">
-<meta property="og:title" content="静夜思">
+<meta property="og:title" content="YYDroid的随想录">
 <meta property="og:url" content="http://yinyinnie.github.com/index.html">
-<meta property="og:site_name" content="静夜思">
+<meta property="og:site_name" content="YYDroid的随想录">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="静夜思">
+<meta name="twitter:title" content="YYDroid的随想录">
 <meta name="twitter:description">
   
-    <link rel="alternative" href="/atom.xml" title="静夜思" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="YYDroid的随想录" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -232,96 +232,6 @@ var _hmt = _hmt || [];
         <p><img src="http://7xs1c5.com1.z0.glb.clouddn.com/data-binding-screen.png" alt="￼DataBinding"></p>
 <h1 id="什么是Data-Binding"><a href="#什么是Data-Binding" class="headerlink" title="什么是Data Binding"></a>什么是Data Binding</h1><p>DataBinding可以说是一种Android平台MVVM的框架，直接将数据和视图进行绑定。</p>
 <p>Google很早就推出了Data Binding Library, 不过一直是Beta版，存在着一些Bug。 这次Google IO 大会（2016年）上发布最新Data Binding Library，现在DataBinding已经是Production了，你可以放心的玩耍了！！</p>
-<h1 id="使用Data-Binding-Library的环境要求"><a href="#使用Data-Binding-Library的环境要求" class="headerlink" title="使用Data Binding Library的环境要求"></a>使用Data Binding Library的环境要求</h1><ul>
-<li><p>它是Support Library，<code>Android 2.1(ApI Level 7+)</code> 都可以使用</p>
-</li>
-<li><p>Android Gradle Plugin 1.5.0-alpha1以上版本</p>
-</li>
-<li><p>Android Studio 1.3以上版本</p>
-</li>
-</ul>
-<h1 id="简单使用步骤"><a href="#简单使用步骤" class="headerlink" title="简单使用步骤"></a>简单使用步骤</h1><h2 id="Step0"><a href="#Step0" class="headerlink" title="Step0"></a>Step0</h2><p>新建一个Android Project，修改app module中的build.gradle文件，加入以下代码：</p>
-<pre><code>android {
-    ....
-    dataBinding {
-        enabled = true
-    }
-}
-</code></pre><p><strong>注意：</strong> 如果你的工程依赖了一个使用了<code>Data Binding</code> 的Library，你的app module中build.gradle依然要加入以上代码</p>
-<h2 id="Step1"><a href="#Step1" class="headerlink" title="Step1"></a>Step1</h2><p>准备你的ViewModel类，有两种写法，如下样例：</p>
-<h3 id="第一种写法"><a href="#第一种写法" class="headerlink" title="第一种写法"></a>第一种写法</h3><pre><code>/**
- * Created on by yydroid 8/17/16.
- */
-public class User {
-    private final String firstName;
-    private final String lastName;
-    public User(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-    public String getFirstName() {
-        return this.firstName;
-    }
-    public String getLastName() {
-        return this.lastName;
-    }
-}
-</code></pre><h3 id="第二种写法"><a href="#第二种写法" class="headerlink" title="第二种写法"></a>第二种写法</h3><pre><code>/**
- * Created on by yydroid 8/17/16.
- */
-public class User {
-    public final String firstName;
-    public final String lastName;
-    public User(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-}
-</code></pre><h2 id="Step2"><a href="#Step2" class="headerlink" title="Step2"></a>Step2</h2><p>使用DataBinding时，布局文件有点不太一样，如下样例：</p>
-<pre><code>&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
-    &lt;!--官方说法:这里不写,会自动生成MainActivityBinding类.
-    但是我测试下,这里有个Bug,在我这版本的AndroidStudio(2.2 beta)中,这个类不会自动生成--&gt;
-    &lt;data class=&quot;cn.onlinecache.databindingdemo.MainActivityBinding&quot;&gt;
-        &lt;variable name=&quot;user&quot; type=&quot;cn.onlinecache.databindingdemo.User&quot;/&gt;
-    &lt;/data&gt;
-    &lt;LinearLayout
-        android:orientation=&quot;vertical&quot;
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;match_parent&quot;
-        android:gravity=&quot;center&quot;&gt;
-        &lt;TextView android:layout_width=&quot;wrap_content&quot;
-                  android:layout_height=&quot;wrap_content&quot;
-                  android:text=&quot;@{user.firstName}&quot;
-            android:textSize=&quot;40dp&quot;/&gt;
-        &lt;TextView android:layout_width=&quot;wrap_content&quot;
-                  android:layout_height=&quot;wrap_content&quot;
-                  android:text=&quot;@{user.lastName}&quot;
-            android:textSize=&quot;40dp&quot;/&gt;
-
-    &lt;/LinearLayout&gt;
-&lt;/layout&gt;
-</code></pre><h2 id="Step3"><a href="#Step3" class="headerlink" title="Step3"></a>Step3</h2><p>在你的对应Activity的onCreate，加入核心绑定代码，如下样例：</p>
-<pre><code>...
- @Override
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-     MainActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-    User user = new User(&quot;YYDroid&quot;, &quot;Nie&quot;);
-    binding.setUser(user);
-
-}
-...
-</code></pre><p><strong>注意:</strong> </p>
-<ul>
-<li>MainActivityBinding类是自动根据Step2中的配置来生成的</li>
-<li>当使用ListView或者RecyclerView时，在对应的Adapter类中加入代码：</li>
-</ul>
-<pre><code>ListItemBinding binding = ListItemBinding.inflate(layoutInflater, viewGroup, false);
-//or
-ListItemBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item, viewGroup, false);
-</code></pre><h2 id="Step4"><a href="#Step4" class="headerlink" title="Step4"></a>Step4</h2><p>点击Android Studio Run，你将会看到神奇的效果，的效果如下：</p>
-<p><img src="http://7xs1c5.com1.z0.glb.clouddn.com/DataBinding-Talk-One.png" alt="DataBindingDemo"></p>
-
       
     </div>
     
@@ -334,6 +244,10 @@ ListItemBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.list_
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/18/DataBinding-Talk-One/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
